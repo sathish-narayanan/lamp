@@ -1,0 +1,51 @@
+<?php
+require "class.validate.inc";
+    $data = $_POST;
+$rules = array(
+      "v1"=>"Require",
+      "v2"=>array(
+            "require"=>true,
+            "minlength"=>2,
+            "maxlength"=>4                    
+      ),
+      "v3" => array(
+            "eqlength"=> 8
+      ),
+    "v4" => array(
+        "equal"    =>"MyBoy"
+    )
+);
+ 
+$message = array(
+      "v1"=>"This field can not be empty",
+    "v2"=>array(
+        "require"=>"This field is required",
+        "minlength"=>"String is too short",
+        "maxlength"=>"Input is more character then required"
+    ),
+    "v4"=>array("equal"=>"I dont like this word. Please Type a good word "),
+    "v3"=> array("eqlength"=>"Are you blind.")
+   
+);
+ 
+$objValidator = new Validate($rules,$message);
+ 
+if(!$objValidator->isValid($data))
+{
+    $errors = $objValidator->ErrorFields();
+            echo "you have total ".$objValidator->CountError()." errors.<br/>Fields are :".implode(",",$errors);
+    echo "<br/><hr/>";
+    foreach($errors as $key=>$var)
+    {
+        echo "For the field <b>$var</b> errors are: ";
+        $value = $objValidator->getErrors($var);
+        if(is_array($value))
+            echo implode(" * ",$value);
+        else echo $value;
+        echo "<br/>";
+    }
+    echo "<br/><hr/>";
+   
+}
+else echo "valid";
+}?>
