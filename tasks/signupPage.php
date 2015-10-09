@@ -3,9 +3,20 @@
  <html>
  	<head>  <title>Gmail</title>
 		
- 	        <script type="text/javascript" src="../js/registration.js"></script>
- 	        <script type="text/javascript" src="../js/common.js"></script>         
-            <link rel="stylesheet" type="text/css" href="../css/style.css"/> 
+ 	        <script type="text/javascript" src="../../js/registration.js"></script>
+ 	        <script type="text/javascript" src="../../js/common.js"></script>         
+            <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+            <?php
+            if(isset($error))
+             {
+            ?>
+            input:focus
+             {
+              border:solid red 1px;
+             } 
+             <?php
+             }
+             ?>
    </head>
 		<body>
 			<h1 align="center">Gmail</h1>
@@ -14,6 +25,16 @@
 					<form action="signupPage_upload.php" method="POST" >
                     <table align="center" cellpadding = "10">
  					<tr>
+ 					<?php
+                    if(isset($error))
+                         {
+                         ?>
+                        <tr>
+                        <td id="error"><?php echo $error; ?></td>
+                        </tr>
+                        <?php
+                         }
+                         ?>
 					<td>First Name</td>
 					<td>
 				    <input id="fname" name="firstName" title="enter your first name" type="text" 

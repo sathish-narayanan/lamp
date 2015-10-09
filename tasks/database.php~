@@ -1,5 +1,5 @@
 <?php 
-$link = mysql_connect("127.0.0.1","root","aspire@123","sathish" )
+$link = mysqli_connect("127.0.0.1","root","aspire@123","sathish" )
   or die("Unable to connect to MySQL");
 echo "Connected to MySQL<br>";
  if (!$link) {
