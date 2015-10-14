@@ -1,31 +1,7 @@
 <?php include('user.php');?>
 <?php require_once("databaseConnect.php");?>
-<?php include('Submit.php')?>
-<?php 
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$password = $_POST['password'];
-$confirmPassword = $_POST['confirmPassword'];
-$email = $_POST['email'];
-?>
-<?php
-if (isset($_POST['submit']) && $error == '') { 
-echo "<p>Form has been submitted successfully.</p>"; 
-}
-else {
-function __autoload($User) {
-	include $User.'.php';
-}
-$User  = new User($input);
-if($User -> validate())
-{
-$User -> addUSer();
-}
-else 
-{
-	print_r($error);
-	}
-}?>
+<?php require_once("validator.php")?>
+
 
 <!DOCTYPE html>
 <html>
@@ -39,31 +15,48 @@ else
 <body>
 	<h1 align="center">Gmail</h1>
 	<h2 align="center">signup</h2>
-                     <?=$error?>                 
-					<form action="signupPage_upload.php" method="POST">
+	<?php
+if(!empty($_POST)){
+require_once('function.php');
+$errors = array();
+$validatorObj = new validator($_POST);
+$validatorObj->validate();
+if($validatorObj->getIsValid()){
+// create user object for OOP manipulation
+$userObj = new User($_POST);
+}
+else{
+$errors = $validatorObj->getErrors();
+}
+}
+?>
+<?php if(!empty($errors)):?>
+<p> errors occured:please check</p>
+<p class="error">
+<?php
+if(is_array($errors)):
+foreach($errors as $val):
+echo $val.'<br />';
+endforeach;
+endif;
+?>
+</p>
+<?php elseif(!empty($saved) && $saved == true):?>
+success!
+<?php $_POST = array();?>
+<?php endif;?>
+                    <form action="signupPage_upload.php" method="POST">
                     <table align="center" cellpadding="10">
-			        <tr>
-	 					<?php
-	                    if(isset($error))
-	                         {
-	                         ?>
-                   </tr>
-                   <tr>
-				   <td id="error"><?php echo "$error"; ?></td>
-			       </tr>
-                        <?php
-                         }
-                         ?>
-					<td>First Name</td>
+			        <td>First Name</td>
 			        <td>
-			        <input id="fname" name="firstName" value="<?php echo $firstName; ?>"
+			        <input id="fname" name="firstName" value="<?php if(!empty($_POST['firstName'])):?><?php echo $_POST['firstName']?><?php else:?>please insert your first name<?php endif;?>"
 				    title="enter your first name" type="text"
 				    onblur="return username(id) " /></td>
 			        </tr>
 			        <tr>
 				    <td>Last Name</td>
 				    <td>
-				    <input id="lname" name="lastName" value="<?php echo $lastName; ?>"
+				    <input id="lname" name="lastName" value="<?php if(!empty($_POST['lastName'])):?><?php echo $_POST['lastName']?><?php else:?>please insert your last name<?php endif;?>"
 					title="enter your last name" type="text"
 					onblur="return username(id)" />
 					</td>
@@ -79,13 +72,13 @@ else
 			        <tr>
 				    <td>Email Id</td>
 				    <td>
-				    <input id="email" name="email" value = "<?php echo $email?>" type="email"  maxlength="100"
+				    <input id="email" name="email" value = "<?php if(!empty($_POST['email'])):?><?php echo $_POST['email']?><?php endif;?>" type="email"  maxlength="100"
 					onblur="return checkEmptybox(id)" /></td>
 			        </tr>
 			        <tr>
 				    <td>Password</td>
 				    <td>
-				    <input id="password" name="password" value="<?php echo $password ?>"
+				    <input id="password" name="password" value="<?php if(!empty($_POST['password'])):?><?php echo $_POST['password']?><?php endif;?>"
 					title="enter the pass word" type="password" maxlength="12"
 					onblur="return checkEmptybox(id)"></td>
 			       <tr>
@@ -93,14 +86,14 @@ else
 				   <td>confirmPassword</td>
 				   <td>
 				   <input id="confirmPassword" name="confirmPassword"
-					value="<?php echo $confirmPassword ?>" title=" enter the pass
+					value="<?php if(!empty($_POST['confirmPassword'])):?><?php echo $_POST['confirmPassword']?><?php endif;?>" title=" enter the pass
 					word" type="password"
 					maxlength="12" onblur="return checkEmptybox(id)"></td>
 			       <tr>
 				   <td>Mobile no</td>
 				   <td>
 				   <input id="form" title="enter your mobile number"
-					value="<?php echo $mobileNo?>" type="text" name="mobileNo" maxlength="10"
+					value="<?php if(!empty($_POST['mobileNo'])):?><?php echo $_POST['mobileNo']?><?php endif;?>" type="text" name="mobileNo" maxlength="10"
 					onblur="return checkEmptybox(id)" /> (10 digit number)</td>
 			       </tr>
 			       <tr>
@@ -133,7 +126,7 @@ else
 			       </tr>
                    <tr>
 			       <td>Pin Code</td>
-			       <td><input id="pin_no" value="<?php echo $pincode?>"
+			       <td><input id="pin_no" value="<?php if(!empty($_POST['pincode'])):?><?php echo $_POST['pincode']?><?php endif;?>"
 					title="enter your pin code" type="numb" name="pincode"
 					maxlength="6" onblur="return checkEmptybox(id)" /> (6 digit number)
 				   </td>
@@ -166,5 +159,4 @@ else
   
 </body>
 </html>
-
 
