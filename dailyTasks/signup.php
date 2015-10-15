@@ -8,8 +8,8 @@
 <head>
 <title>Gmail</title>
 
-<!--  <script type="text/javascript" src="../js/registration.js"></script> -->
-<!-- <script type="text/javascript" src="../js/common.js"></script> -->
+<script type="text/javascript" src="../js/registration.js"></script> 
+<script type="text/javascript" src="../js/common.js"></script> 
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 <body>
@@ -45,7 +45,7 @@ endif;
 success!
 <?php $_POST = array();?>
 <?php endif;?>
-                    <form action="signupPage_upload.php" method="POST">
+                    <form action="signupPage_upload.php"  method="POST" >
                     <table align="center" cellpadding="10">
 			        <td>First Name</td>
 			        <td>
