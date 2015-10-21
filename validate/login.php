@@ -1,24 +1,18 @@
 <?php
 ini_set("displayerrors",1);
-require_once 'databaseConnect.php';
+//require_once 'databaseConnect.php';
 
 
 function __autoload($class_name) {
 	include $class_name . '.php';
 }
-$obj = new LoginUser();
+$obj = new LoginUser($_POST);
 
         if(isset($_POST['submit'])){
-        	$this->userName = $_POST['userName'];
-        	$this->password = $_POST['password'];
-        	$this->confirmPassword = $_POST['confirmPassword'];
-        	$this->mobileNo = $_POST['mobileNo'];
-        	$this->email = $_POST['email'];
-        	$this->day = $_POST['day'];
-        	$this->month = $_POST['month'];
-        	$this->year = $_POST['year'];
-	    $obj -> validate($input);
+        	
+	  $validate =   $obj -> validate();
 }
+$db = new databaseConnect();
 
 ?> 
 <!DOCTYPE html>
@@ -27,19 +21,23 @@ $obj = new LoginUser();
     <title>login page</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
      <h3 align = "center">loginpage</h3>
-     <script type="text/javascript" src="../js/signupValidation.js"></script>
-      <script type="text/javascript" src="../js/common.js"></script>
+    
     </head>
     
       <body>
-       
-       <form method="POST" action="loginPage.php"  onsubmit = "return check()" >
-       
+       <p> <?php if(isset($validate[errorFlag])== false)
+       {
+       	echo $validate['errorMessage'];
+       }
+       	?></p>
+       	        <form method="POST" action="login.php"  onsubmit = "return check()" >
+      
            <table align="center" cellpadding = "10">
                <tr>
                 <td>userName </td>
                   <td>
                     <input type="text"  name = "userName" id = "userName" onblur = "return checkEmptybox(id)" />
+                    
                     <div id = "userNameError" ></div>
                   </td>
               </tr>
