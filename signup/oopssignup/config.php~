@@ -1,0 +1,61 @@
+function validate()
+{   
+    var error = true;
+    
+    var username = document.getElementById("userName").value;
+        if (username == "") {
+	        document.getElementById("userNameError").innerHTML = "Please fill first name";
+            var error = false;
+			}
+	    else {
+            document.getElementById("firstNameError").innerHTML="";
+            }
+    var password = document.getElementById("password").value;
+        if (password == "") {
+	        document.getElementById("passwordError").innerHTML = "Please fill password";
+            var error = false;
+			}
+	    else {
+            document.getElementById("passwordNameError").innerHTML = "";
+            }
+             if (password.length <4) {
+	        document.getElementById("passwordError").innerHTML = "password too weak";
+            var error = false;
+			}
+	    else {
+            document.getElementById("passwordNameError").innerHTML = "";
+            }
+    var confirmPassword = document.getElementById("confirmPassword").value;
+        if (confirmPassword == "") {
+	        document.getElementById("confirmPasswordError").innerHTML = "Please fill confirm password";
+            var error = false;
+			}
+	    else {
+            document.getElementById("passwordNameError").innerHTML = "";
+            }
+        if (password != confirmPassword) {
+           document.getElementById("PasswordError").innerHTML = "password didnt match";
+            var error = false;
+			}
+    var month = document.getElementById("month").selectedIndex;
+		if (month == "") {
+		  document.getElementById("monthError").innerHTML = "select month";
+		var error = false;
+		}	
+	var day = document.getElementById("day").selectedIndex;
+		if (day == "") {
+		  document.getElementById("dayError").innerHTML = "select day";
+		var error = false;
+		}	
+	var year = document.getElementById("year").selectedIndex;
+		if (year == "") {
+		  document.getElementById("yearError").innerHTML = "select year";
+		var error = false;
+		}	
+	if (error) {
+        return true;
+        }
+    else {
+        return false;
+        }
+}

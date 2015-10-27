@@ -1,0 +1,108 @@
+<?php
+
+class AddUser{
+	const MIN_PASSWORD_SIZE= 7;
+	const MAX_DAY_SIZE = 31;
+	const MAX_MONTH_SIZE = 12;
+	const MAX_YEAR_SIZE = 2015;
+	public $userNameVar = "";
+	public $passwordVar = "";
+	public $confirmPasswordVar ="";
+	public $mobileNoVar = "";
+	public $emailVar = "";
+	public $dayVar = "";
+	public $monthVar = "";
+	public $yearVar = "";
+	public function __construct ($input) {
+	    $this->userNameVar = $input["userName"];
+	    $this->passwordVar = $input["password"];
+	    $this->confirmPasswordVar = $input["confirmPassword"];
+	    $this->mobileNoVar = $input["mobileNo"];
+	    $this->emailVar = $input["email"];
+	    $this->dayVar = $input["day"];
+	    $this->monthVar = $input["month"];
+	    $this->yearVar = $input["year"];
+		}
+	
+    public function validate()
+	{
+		$errorMessage = array();
+		$errorFlag = false;
+		if(empty($this->userNameVar)) {
+			$errorMessage[] ="you forget to enter username";
+			$errorFlag = true;
+		}
+		if(!ctype_alpha($this->userNameVar)) {
+			$errorMessage[] = "You forgot to enter a valid userName";
+			$errorFlag = true;
+		}
+
+		if(empty( $this->passwordVar )) {
+			$errorMessage[] = "enter a valid passworrd";
+			$errorFlag = true;
+		}
+		if(!ctype_digit( $this->mobileNoVar) OR strlen( $this->mobileNoVar) != 10) {
+			$errorMessage[] = "Enter a valid phone number";
+			$errorFlag = true;
+		}
+		if(strlen( $this->passwordVar )<MIN_PASSWORD_SIZE){
+			$errorMessage[] = "password too weak";
+			$errorFlag = true;
+		}
+		if(empty( $this->confirmPasswordVar )) {
+			$errorMessage[] = "You forgot to enter confirm password column!</li>";
+			$errorFlag = true;
+		}
+		if($this->passwordVar !=  $this->confirmPasswordVar ){
+			$errorMessage[] = "password didnt match";
+			$errorFlag = true;
+		}
+		if(strlen($this->dayVar)>$MAX_DAY_SIZE){
+			$errorMessage[] = "enter valid day date";
+			$errorFlag = true;
+		}
+		if(strlen($this->monthVar)>$MAX_MONTH_SIZE){
+			$errorMessage[] = "enter valid month date";
+			$errorFlag = true;
+		}
+		if(strlen($this->yearVar)>$MAX_YEAR_SIZE){
+			$errorMessage[] = "password too weak";
+			$errorFlag = true;
+		}
+		if(empty($this->emailVar)) {
+			$errorMessage[] = "You forgot to enter confirm password column!</li>";
+			$errorFlag = true;
+		}
+		return $errorMessage;
+		foreach ($invalid as $errorMessage){
+			print_r($invalid); 
+			return false;
+		}
+	}
+
+	public function AddUser(){
+			
+		$link = mysqli_connect(DB_IP,DB_USER,DB_PASSWORD,DB_NAME);
+		if (!$link) {
+
+			echo mysqli_connect_errno().PHP_EOL;
+			echo mysqli_connect_error().PHP_EOL;
+		}
+		else {
+			echo "success";
+			$sql = "INSERT INTO login(userName,email_id,password,mobileNo,day,month,year) VALUES('$this->userName', '$this->email', '$this->password', '$this->mobileNo',$this->day','$this->month','$this->year')";
+			if(mysqli_query($link, $sql)){
+				echo "Records added successfully.";
+			}
+			mysqli_close($link);
+		}
+
+	}
+
+}
+?>
+
+
+
+
+ 
