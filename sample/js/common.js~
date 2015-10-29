@@ -1,0 +1,32 @@
+function checkEmptybox(check)
+{
+        var c = document.getElementById(check).value;
+        if(c == ""){
+           alert("please dont leave empty boxes");
+           return false;
+      }
+   }
+ 
+function checkAlphaNumeric(name)
+ {
+        var text=document.getElementByclass(name).value;
+        var re = /^([^0-9]+[a-zA-z]{1,30}$)/;
+        if(re.test(text)){
+        return true;
+        }
+        else
+        {
+          alert("Dont use numbers");
+          return false;
+        }
+        }
+
+function username(id)
+    {
+        if(!checkEmptybox(id)){
+            if(!checkAlphaNumeric(id))
+              {
+                 return true;
+              }
+         }
+    }

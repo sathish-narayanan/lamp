@@ -1,0 +1,38 @@
+function validation()
+{
+    var error =true;
+    var userName = document.getElementById("userName").value;
+    if (userName == "") {
+        document.getElementById("userName").innerHtml="enter username";
+        document.myForm.userName.focus() ;
+        var error = false;
+         }
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirmPassword").value;
+    if (password != confirm_password) {
+        alert("password doesnot match");
+        document.myForm.password.focus() ;
+        var error = false;
+        } 
+    var mob_no = document.getElementById("mob_no").value;
+    if (isNaN(mob_no)) {
+      alert("mobile no should be number");
+             document.myForm.mobileNo.focus() ;
+             var error = false;
+         }
+    var address = document.getElementById("address").value;
+           if (address == "") {
+             alert("address should not be empty");
+             document.myForm.address.focus() ;
+             var error = false;
+         }  
+
+         if(error)
+         {
+         return true;
+         }
+         else {
+          return false;
+          }
+}
+}

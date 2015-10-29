@@ -1,0 +1,52 @@
+function register()
+{   
+    var error = true;
+   
+    var lastname = document.getElementById("lastName").value;
+        if (lastname == "") {
+	        document.getElementById("lastNameError").innerHTML = "Please fill last name";
+            var error = false;
+			}
+	    else {
+            document.getElementById("lastNameError").innerHTML = "";
+            }
+            var re = /^([a-zA-Z]{1,30})/;
+            var name = document.getElementById("lastName");
+            if (!re.test(name.value)) {               
+                document.getElementById("lastNameError").innerHTML = "Enter text only";
+                var error = false;
+                }
+                var genderm = document.getElementById("male").checked;
+                       
+        if (genderm == "") {
+	        document.getElementById("gError").innerHTML = "Please fill ast name";
+            var error = false;
+			}
+	    else {
+            document.getElementById("gError").innerHTML = "";
+            }
+             var genderf = document.getElementById("female").checked;
+            if (genderf == "") {
+	        document.getElementById("gError").innerHTML = "Please fill ast name";
+            var error = false;
+			}
+	    else {
+            document.getElementById("gError").innerHTML = "";
+            }
+		     
+       var address = document.getElementById("address").value;
+        if (address == "") {
+	        document.getElementById("addressError").innerHTML = "Please fill address";
+            var error = false;
+			}
+	    else {
+            document.getElementById("addressError").innerHTML = "";
+            }
+				
+        if (error) {
+            return true;
+            }
+        else {
+            return false;
+           }
+}

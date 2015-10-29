@@ -1,0 +1,70 @@
+function registration_check()
+{ 
+var fname = document.getElementById("fname").value;
+           if(fname == " "){
+             alert("enter your first name");
+             return false;
+         }
+var lname = document.getElementById("lname").value;
+           if(lname == " "){
+             alert("enter your last name");
+             return false;
+         }
+ 
+var password = document.getElementById("password").value;
+var confirm_password = document.getElementById("confirm_password").value;
+           if(password != confirm_password){
+             alert("password doesnot match");
+             return false;
+         } 
+var mob_no = document.getElementById("mob_no").value;
+             if(isNaN(mob_no)){
+             alert("mobile no should be number")
+             return false;
+         }
+var pin_no = document.getElementById("pin_no").value;
+           if(isNaN(pin_no)){
+             alert("pincode should be number")
+             return false;
+         }  
+var month = document.getElementById("month").selectedIndex;
+var day = document.getElementById("day").selectedIndex;
+var year = document.getElementById("year").selectedIndex;
+           if(month == "") {
+             alert("select the month")
+             return false;
+    
+         }
+           if(day == "") {
+             alert("select the day")
+             return false;
+         }
+           if(year == "") {
+             alert("select the year")
+             return false;
+         }
+         
+var loc=document.getElementById("loc").selectedIndex;
+           if(loc == ""){
+             alert("select the loc");
+             }
+             else{
+             alert("your form is successfully registered");
+             return false;
+         }
+var male = document.getElementById("male").checked;
+var female = document.getElementById("female").checked;
+                 if ((male == "") || (female == "")){ 
+                    alert("select the gender")
+                    return false;
+                    }
+var state = document.getElementById("state").value;
+           if(state == ""){
+             alert("enter your state")
+             return false;
+         }
+         
+       
+    }
+  
+ 

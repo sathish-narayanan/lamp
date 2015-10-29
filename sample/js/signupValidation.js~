@@ -1,0 +1,124 @@
+function check()
+
+                {
+				var userName=document.getElementById("userName").value;
+				if(FirstName=="")
+				{
+				document.getElementById("userName").innerHTML="Please enter the user Name";
+                return false;
+			    }
+                document.getElementById("userName").innerHTML="";
+                
+                var re= /^([a-zA-Z]{1,30})/;
+                var name=document.getElementById("userName");
+                if(!re.test(name.value))
+                {               
+                document.getElementById("userName").innerHTML="Enter text only";
+                return false;
+                }
+				var password=document.getElementById("password").value;
+				if(password=="")
+				{
+				document.getElementById("password").innerHTML="Please enter the Password";
+				return false;
+			    }
+                document.getElementById("password").innerHTML="";
+                
+                var re= /^([^0-9]{1,30})/g;
+                var password=document.getElementById("password");
+                if(!re.test(name.value))
+                {               
+                document.getElementById("password").innerHTML="";
+                return false;
+                }
+               	var password=document.getElementById("confirmpassword").value;
+				if(password=="")
+				{
+				document.getElementById("confirmpassword_error").innerHTML="Please enter the confirm password";
+				return false;
+			    }
+                document.getElementById("confirmpassword_error").innerHTML="";
+                var password=document.getElementById("password").value;
+                var confirmpassword=document.getElementById("confirmpassword").value;
+				if(password!=confirmpassword)
+				{
+				document.getElementById("confirmpassword_error").innerHTML="Enter correct password";
+				return false;
+			    }
+				var email=document.getElementById("email").value;
+				if(email=="")
+				{
+				document.getElementById("email_error").innerHTML="Please enter the email-id";
+				return false;
+			    }
+                document.getElementById("email_error").innerHTML="";
+                
+                var re= /^([a-zA-Z0-9]{1,30}[@][a-zA-Z]{1,30}[.][a-zA-Z0-9]{1,30})/g;
+                var email=document.getElementById("email");
+                if(!re.test(email.value))
+                {               
+                document.getElementById("email_error").innerHTML="Enter valid email";
+                return false;
+                }
+				var mobile=document.getElementById("mobile").value;
+				if(mobile=="")
+				{
+				document.getElementById("mobilenumber_error").innerHTML="Please enter the mobile number";
+				return false;
+                }
+                document.getElementById("mobilenumber_error").innerHTML="";
+
+                var re= /^([0-9]{10,10})/;
+                var mobile=document.getElementById("mobile");
+                if(!re.test(mobile.value))
+                {               
+                document.getElementById("mobilenumber_error").innerHTML="Enter correct mobile number";
+                return false;
+                }
+/               if (document.getElementById("radbtnMale").checked == false 
+                && document.getElementById("radbtnFemale").checked == false) {
+                document.getElementById('gender_error').innerHTML = "*Please select gender";
+                document.getElementById('gender_error').style.color = "red";
+
+}
+/* Address */
+				var address=document.getElementById("address").value;
+				if(address=="")
+				{
+				document.getElementById("textarea_error").innerHTML="Please enter the address";
+				return false;
+			    }
+                document.getElementById("textarea_error").innerHTML="";
+/* State */
+				var state=document.getElementById("state").selectedIndex;
+				if(state=="")
+				{
+				document.getElementById("state_error").innerHTML="Select the State";
+				return false;
+			    }
+                document.getElementById("state_error").innerHTML="";
+/* City */				
+                var city=document.getElementById("city").selectedIndex;
+				if(city=="")
+				{
+				document.getElementById("city_error").innerHTML="Select the city";
+				return false;
+			    }
+                document.getElementById("city_error").innerHTML="";
+/* Security Question */				
+                var question=document.getElementById("question").selectedIndex;
+				if(question=="")
+				{
+				document.getElementById("question_error").innerHTML="Select the security question";
+				return false;	
+			    }
+                document.getElementById("question_error").innerHTML="";
+/* Answer for security question*/
+                var ans=document.getElementById("answer").value;
+				if(ans=="")
+				{
+				document.getElementById("answer_error").innerHTML="Please enter the answer for your security question";
+				return false;
+			    }
+                document.getElementById("answer_error").innerHTML="";
+				}
