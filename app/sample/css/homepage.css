@@ -1,0 +1,25 @@
+body {
+    background-image: url("../image/whitecake.jpg");
+    color: #000;
+    font-style: normal;
+    margin: 13px;
+    padding: 58px;
+    width: 971px;
+}
+div {
+	position = right;
+}
+.update {
+	position : "right";
+	color : blue;
+	margin: 13px;
+    padding: 58px;
+}
+table {
+	font-style: normal;
+}
+#button {
+    position : "right";
+    color : green;
+
+}

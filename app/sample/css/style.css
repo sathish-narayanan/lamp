@@ -1,0 +1,46 @@
+body
+{   
+    background-image: url("../image/birthday.jpg"); width= "100%" height= "100%"; 
+    background-color:rgb(70,60,120);
+    font-style:Times New Roman; 
+    width: 900px;
+    padding: 10px;
+    position:unset;
+    margin: 110px;
+    color: green;
+    background-repeat: norepeat;
+}
+h2{
+    color: rgb(10,12,170)
+  }
+h1
+ {
+    color: rgb(0, 255, 0);
+    padding: -8px;
+    margin: 11px;
+    position: right;
+  } 
+  div {
+  color: rgb(232,09,12)
+  }
+.button {
+ color: green;
+ }  
+ .reset {
+ color : blue;
+ }
+table {
+font-style: Normal;
+}
+#nationality option{
+width: 200px;
+}
+#designation option{
+  width:200px;
+}
+#office option{
+  width: 200px;
+}
+#bloodgroup option{
+  width: 200px;
+}
