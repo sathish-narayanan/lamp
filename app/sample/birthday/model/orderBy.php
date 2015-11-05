@@ -1,6 +1,6 @@
 <?php
 class orderBy
-{   public $sql;
+{   
     public function arrangeAscending() 
     {  
     $sql = "select * from employee order by firstname asc";

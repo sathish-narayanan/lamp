@@ -10,17 +10,20 @@ body {
 h1 {
     color: rgb(110, 252, 190);
 }
-  h2{
+h2{
     color: rgb(157,12,170);
-  }
-  div{
-  color: rgb(255,0,0);
-  }
+}
+div{
+    color: rgb(255,0,0);
+}
 .button{
- color: black;
- }  
- .reset{
- color : black;
- }
+     color: black;
+}  
+.reset{
+     color : black;
+}
+.dropdown option{
+    width: 200px;
+}
 
 

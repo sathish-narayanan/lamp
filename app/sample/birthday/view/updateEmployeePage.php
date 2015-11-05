@@ -1,23 +1,22 @@
 <?php
-ini_set('display_errors', '1');
+
 require_once '../model/Database.php';
 require_once '../config/config.php';
 require_once '../config/autoload.php';
 require_once '../model/Employee.php';
 
-$id = $_GET['id'];
-$link = new Database();
+$id = $_GET['id'];/* getting id which is passed from mainPage and assigning to $id */
+$connection = new Database();
 $query = "SELECT * FROM employee WHERE emp_id = '$id'";
-$connection = $link->query($query);
-// $result = mysqli_query($link, $query); 
-($row = mysqli_fetch_array($connection))  
+$result = $connection->query($query);
+($row = mysqli_fetch_array($result))  
 ?>   
 <!DOCTYPE html>
 <html>
     <head>
         <title>Update</title>
-            <script type="text/javascript" src = "../../js/update.js"></script>
-            <link rel = "stylesheet" type = "text/css" href="../../css/update.css"/>
+            <script type = "text/javascript" src = "../../js/update.js"></script>
+            <link rel = "stylesheet" type = "text/css" href = "../../css/update.css"/>
             <h1 align = "center">Update Details</h1>
    </head>
    <body>
@@ -27,14 +26,14 @@ $connection = $link->query($query);
                    <tr>
                         <td>First name </td>
                         <td>
-                            <input type="text"  name = "firstName" id = "firstName" value = "<?php echo "{$row['firstname']}"; ?>" />
+                            <input type = "text"  name = "firstName" id = "firstName" value = "<?php echo "{$row['firstname']}"; ?>" />
                             <div id = "firstNameError" ></div>
                         </td>
                    </tr>
                    <tr>
                        <td>Last name </td>
                        <td>
-                           <input type="text"  name = "lastName" id = "lastName" value = "<?php echo "{$row['lastname']}"; ?>"  />
+                           <input type = "text"  name = "lastName" id = "lastName" value = "<?php echo "{$row['lastname']}"; ?>"  />
                            <div id = "lastNameError" ></div>
                        </td>
                    </tr>
@@ -48,7 +47,7 @@ $connection = $link->query($query);
                    <tr>
                        <td>Designation</td>
                        <td>
-                           <select name ="designation" id = "designation" value = <?php echo "{$row['designation']}"; ?> >
+                           <select class = "dropdown" name ="designation" id = "designation" value = <?php echo "{$row['designation']}"; ?> >
                                <option>--select--</option>
                                <option value = "Trainee">Trainee</option>
                                <option value = "Engineer">Engineer</option>
@@ -66,7 +65,7 @@ $connection = $link->query($query);
                    <tr>
                         <td>Nationality:</td>
                         <td>
-                            <select name = "nationality" id = "nationality">
+                            <select class = "dropdown" name = "nationality" id = "nationality">
                                 <option> --select--</option>
                                 <option value = "American">American</option>
                                 <option value = "Australian">Australian</option>
@@ -88,7 +87,7 @@ $connection = $link->query($query);
                     <tr>
                         <td>Office</td>
                         <td>
-                            <select name = "office" id = "office" value = "<?php echo "{$row['office']}"; ?>" >
+                            <select class = "dropdown" name = "office" id = "office" value = "<?php echo "{$row['office']}"; ?>" >
                                 <option>--select-- </option>
                                 <option value = "Chennai">Chennai</option>
                                 <option value = "Gurgoan">Gurgoan</option>
@@ -99,7 +98,7 @@ $connection = $link->query($query);
                         </td>
                     </tr>        
                     <tr>
-                        <td>Address <br /><br /><br /></td>
+                        <td>Home address <br /><br /><br /></td>
                         <td>
                             <textarea id = "address" title = "enter the address" name = "address"
                             rows="4" cols = "30" value = "<?php echo "{$row['address']}"; ?>"  > </textarea>
@@ -109,7 +108,7 @@ $connection = $link->query($query);
                     <tr>
                         <td>Blood group</td>
                         <td>
-                            <select name = "bloodgroup" id = "bloodgroup">
+                            <select class = "dropdown" name = "bloodgroup" id = "bloodgroup">
                                 <option value = "">--select--</option>
                                 <option value = "A(Pos)">A(Pos)</option>
                                 <option value = "A1(Pos)">A1(Pos)</option>

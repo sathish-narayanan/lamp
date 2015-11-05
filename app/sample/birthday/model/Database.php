@@ -9,6 +9,6 @@ class Database {
             return mysqli_query($this->db, $sql);
 	 	} else {
 	 	      echo "error";	
-	 	  }
+	 	}
 	} 
 }

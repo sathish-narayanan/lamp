@@ -1,17 +1,16 @@
 <?php
-
 require_once '../model/Database.php';
 require_once '../config/config.php';
 require_once '../model/Employee.php';
 
-$obj = new Employee($_POST);
-if (isset($_POST['submit'])) {
-    $validate = $obj -> validate();
-if ($validate['errorFlag'] == true) {
-	echo $validate['errorMessage'];
-} else {
-      $obj->addEmployee();
-   }
+$emp_obj = new Employee($_POST);
+if (isset($_POST['submit'])) { 
+    $validate = $emp_obj -> validate(); /*calling validate function and saving the return value in $validate*/
+    if ($validate['errorFlag'] == true) { /*checking is there any error, if no error call addEmployee()*/
+    	echo $validate['errorMessage'];
+    } else {
+          $emp_obj->addEmployee();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -19,8 +18,8 @@ if ($validate['errorFlag'] == true) {
     <head>
         <title>Register</title>
             <script type = "text/javascript" src = "../../js/Register.js"></script>
-            <link rel = "stylesheet" type = "text/css" href="../../css/style.css"/>
-            <h1 align = "right">Register Details</h1>
+            <link rel = "stylesheet" type = "text/css" href = "../../css/register.css"/>
+            <h1 align = "right">Employee Details</h1>
     </head>
     <body>
         <form method = "POST" action = "">
@@ -42,8 +41,8 @@ if ($validate['errorFlag'] == true) {
                 <tr>
                     <td>Gender</td>
                     <td>
-                        <input type = "radio" name = "gender" id = " gender" value="m">Male</input><div id = "gError"></div>
-                        <input type = "radio" name = "gender" id = "gender" value="f">Female</input><div id = "gError"></div>
+                        <input type = "radio" name = "gender" id = " gender" value = "m">Male</input><div id = "gError"></div>
+                        <input type = "radio" name = "gender" id = "gender" value = "f">Female</input><div id = "gError"></div>
                     </td>
                 </tr>
                 <tr>
@@ -107,7 +106,7 @@ if ($validate['errorFlag'] == true) {
                     </td>
                 </tr>        
                 <tr>
-                    <td>Address <br /><br /><br /></td>
+                    <td>Home address <br /><br /><br /></td>
                     <td>
                         <textarea id = "address" title = "enter the address" name = "address"
                                   rows = "4" cols = "30" > </textarea>

@@ -11,5 +11,5 @@ if (!result) {
     echo " Not deleted";
 } else { 
       header("Location:mainPage.php");
-  }
+}
 ?> 

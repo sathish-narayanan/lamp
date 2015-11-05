@@ -19,7 +19,7 @@ if (!result) {
 	echo"not update";
 } else {
       header("Location:../view/mainPage.php");
-  }
+}
 ?>
 <button type = "button" onclick = "window.location.href = ' ../view/mainPage.php' "></button>
 </body>
