@@ -2,7 +2,6 @@
 
 require_once '../model/Database.php';
 require_once '../config/config.php';
-require_once '../config/autoload.php';
 require_once '../model/Employee.php';
 
 $id = $_GET['id'];/* getting id which is passed from mainPage and assigning to $id */
@@ -15,8 +14,12 @@ $result = $connection->query($query);
 <html>
     <head>
         <title>Update</title>
-            <script type = "text/javascript" src = "../../js/update.js"></script>
+            <script type = "text/javascript" src = "../../js/Validate.js"></script>
             <link rel = "stylesheet" type = "text/css" href = "../../css/update.css"/>
+             <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  
+             <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
+             <script>  $(document).ready(function() {    $("#datepicker").datepicker({ maxDate: new Date,dateFormat: "yy/mm/dd" });    $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" });  });  
+             </script>
             <h1 align = "center">Update Details</h1>
    </head>
    <body>
@@ -26,29 +29,29 @@ $result = $connection->query($query);
                    <tr>
                         <td>First name </td>
                         <td>
-                            <input type = "text"  name = "firstName" id = "firstName" value = "<?php echo "{$row['firstname']}"; ?>" />
+                            <input type = "text"  name = "firstName" placeholder = "Enter Firstname " id = "firstName" value = "<?php echo "{$row['firstname']}"; ?>" />
                             <div id = "firstNameError" ></div>
                         </td>
                    </tr>
                    <tr>
                        <td>Last name </td>
                        <td>
-                           <input type = "text"  name = "lastName" id = "lastName" value = "<?php echo "{$row['lastname']}"; ?>"  />
+                           <input type = "text"  name = "lastName" placeholder = "Enter lastname " id = "lastName" value = "<?php echo "{$row['lastname']}"; ?>"  />
                            <div id = "lastNameError" ></div>
                        </td>
                    </tr>
                    <tr>
                        <td>Date of Birth:</td>
                        <td>
-                           <input type = "date" placeholder = "yyyy-mm-dd" name = "dob" id = "dob" value = "<?php echo "{$row['DOB']}"; ?>" />  
+                           <input type = "date" placeholder = "Enter date of birth " name = "dob" id = "datepicker" value = "<?php echo "{$row['DOB']}"; ?>" />  
                            <div id = "dobError"></div>
                        </td>
                    </tr>
                    <tr>
                        <td>Designation</td>
                        <td>
-                           <select class = "dropdown" name ="designation" id = "designation" value = <?php echo "{$row['designation']}"; ?> >
-                               <option>--select--</option>
+                           <select class = "dropdown" name ="designation"  id = "designation" value = <?php echo "{$row['designation']}"; ?> >
+                               <option>--select the designation--</option>
                                <option value = "Trainee">Trainee</option>
                                <option value = "Engineer">Engineer</option>
                                <option value = "TechnicalArchitect">Technical Architect</option>
@@ -66,7 +69,7 @@ $result = $connection->query($query);
                         <td>Nationality:</td>
                         <td>
                             <select class = "dropdown" name = "nationality" id = "nationality">
-                                <option> --select--</option>
+                                <option> --select the nationality--</option>
                                 <option value = "American">American</option>
                                 <option value = "Australian">Australian</option>
                                 <option value = "Bangladeshi">Bangladeshi</option>
@@ -88,7 +91,7 @@ $result = $connection->query($query);
                         <td>Office</td>
                         <td>
                             <select class = "dropdown" name = "office" id = "office" value = "<?php echo "{$row['office']}"; ?>" >
-                                <option>--select-- </option>
+                                <option>--select the office-- </option>
                                 <option value = "Chennai">Chennai</option>
                                 <option value = "Gurgoan">Gurgoan</option>
                                 <option value = "Hyderabad">Hyderabad</option>
@@ -109,7 +112,7 @@ $result = $connection->query($query);
                         <td>Blood group</td>
                         <td>
                             <select class = "dropdown" name = "bloodgroup" id = "bloodgroup">
-                                <option value = "">--select--</option>
+                                <option value = "">--select the bloodgroup--</option>
                                 <option value = "A(Pos)">A(Pos)</option>
                                 <option value = "A1(Pos)">A1(Pos)</option>
                                 <option value = "A(Neg)">A(Neg)</option>
@@ -129,7 +132,7 @@ $result = $connection->query($query);
               </tr>     
                      <tr>
                         <td colspan = "2" align = "center">
-                            <input type = "submit" name = "submit"  onclick = "return update()" value = "Update" class = "button" >
+                            <input type = "submit" name = "submit"  onclick = "return validate()" value = "Update" class = "button" >
                             &nbsp;&nbsp;&nbsp;
                             <input type = "reset" name = "Reset" value = "Reset" class = "reset">
                         </td>

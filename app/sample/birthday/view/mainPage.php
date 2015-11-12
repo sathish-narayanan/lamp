@@ -1,11 +1,10 @@
 <?php
-include_once 'Title.php';
-include_once '../model/Database.php';
-include_once '../config/config.php';
+require_once 'Title.php';
+require_once '../model/Database.php';
+require_once '../config/config.php';
 
 ?>
 <!doctype html>
-  
 <html>
 <body>
 <div align = "center">
@@ -13,7 +12,7 @@ include_once '../config/config.php';
 $order = "";
 $query = "";
 $connection = new Database(); /*object for Database class*/
-$orderBy_obj = new orderBy(); /*object for orderBy class*/
+$orderBy_obj = new OrderBy(); /*object for orderBy class*/
 if (isset ($_POST['proceed'])) {
     $order =  $_POST['select'];
 }
@@ -36,7 +35,7 @@ if ($order == "noOption") {
     echo "No specific order selected";
     $query = $orderBy_obj->arrangeRandom();
 }
-$result = $connection->query($query); /*calling query() in Database class via $connection object */
+$result = $connection->query($query);
 if ($result) { 
     echo "<table border = 1><tr>
           <th class = 'th'>Employee Name&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -45,22 +44,24 @@ if ($result) {
           <th class = 'th'>DOB</th>
           <th colspan = '4' class = 'th'>Perform</th>
           </tr>"
-?>
-<?php 
+    ?>
+    <?php 
     while ($row = $result->fetch_assoc()) { 
-    echo "<tr class = 'tr'><td>".$row["firstname"]."</td><td>".$row["designation"]."</td><td> 
-         ".$row["office"]."</td><td>".
-         $row["DOB"]."&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>" ; 
-    echo "<td>" ."</td>"; echo '<td><a  name = "update"  
-         href= "updateEmployeePage.php?id='.$row['emp_id'].'">Update</a></td>'; /*assigning emp_id to id and passing the value to updateEmployeePage*/
-    echo "<td>" ."</td>"; echo '<td><a  name = "delete"  
-         href= "deleteEmployee.php?id='.$row['emp_id'].'" 
-         onclick = "return confirm(\'Are you sure want to delete?\');">Delete</a></td>';/*assigning emp_id to id and passing the value to deleteEmployeePage*/ 
-}
+        echo "<tr class = 'tr'>
+        <td>".$row["firstname"]."</td><td>".$row["designation"]."</td><td> 
+        ".$row["office"]."</td><td>".
+        $row["DOB"]."&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>" ; 
+        echo "<td>" ."</td>"; echo '<td><a name = "update"  
+        href= "updateEmployeePage.php?id='.$row['emp_id'].'">Update</a></td>'; 
+        echo "<td>" ."</td>"; echo '<td><a name = "delete"  
+        href= "deleteEmployee.php?id='.$row['emp_id'].'" 
+        onclick = "return confirm(\'Are you sure want to delete?\');">
+        Delete</a></td>'; 
+    }
     echo "</table>";
 } else {
-      echo "0 results";
-  }
+    echo "0 results";
+}
 
 ?> 
 </div>

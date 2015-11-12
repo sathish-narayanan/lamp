@@ -1,5 +1,5 @@
 <?php
-include_once '../model/orderBy.php';
+require_once '../model/OrderBy.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,8 @@ include_once '../model/orderBy.php';
                 <option value = "arrangeAscending">Arrange by ascending</option>
                 <option value = "arrangeDescending">Arrange by Descending</option>
             </select>
-            <p><input type = "submit" class = "go" value = "go" name = "proceed" /></p>
+            <p><input type = "submit" class = "go" 
+                value = "go" name = "proceed" /></p>
         </form>
     </body>
 </html>

@@ -6,8 +6,8 @@ require_once '../model/Employee.php';
 $id = $_GET['id'];
 $link = new Database();
 $query = "DELETE FROM employee WHERE emp_id = '$id'";
-$result = $link->query($query); 
-if (!result) {
+$RESULT = $link->query($query); 
+if (!RESULT) {
     echo " Not deleted";
 } else { 
       header("Location:mainPage.php");
