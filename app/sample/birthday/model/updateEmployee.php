@@ -16,8 +16,8 @@ $link = new Database();
 $query = "UPDATE employee SET firstname = '$firstname' , lastname = '$lastname' , 
 	     DOB = '$birthday' , office = '$office' , designation = '$designation',
 	     address = '$address' WHERE emp_id='$emp_id'";
-$result = $link->query($query);
-if (!result) {
+$RESULT = $link->query($query);
+if (!RESULT) {
     echo "not update";
 } else {
     header("Location:../view/mainPage.php");

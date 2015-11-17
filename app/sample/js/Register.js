@@ -5,7 +5,7 @@ function register()
     if (firstname == "") {
         document.getElementById("firstNameError").innerHTML = "Please fill first name";
         var error = false;
-	} else {
+    } else {
         document.getElementById("firstNameError").innerHTML = "";
         var re = /^([a-zA-Z]{1,30})/;
         var name = document.getElementById("firstName");
@@ -13,7 +13,7 @@ function register()
             document.getElementById("firstNameError").innerHTML = "Enter text only";
             var error = false;
         }
-	}
+    }
     var lastname = document.getElementById("lastName").value;
     if (lastname == "") {
         document.getElementById("lastNameError").innerHTML = "Please fill last name";

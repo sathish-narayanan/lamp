@@ -23,3 +23,9 @@ table {
     color : green;
 
 }
+.add { 
+    display: inline-block;      
+    background-color:light green;
+    color:#000;
+    font-family:Arial;
+}
