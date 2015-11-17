@@ -3,12 +3,14 @@
 require_once '../model/Database.php';
 require_once '../config/config.php';
 require_once '../model/Employee.php';
+require_once '../model/dropdownValues.php';
+
 
 $id = $_GET['id'];/* getting id which is passed from mainPage and assigning to $id */
 $connection = new Database();
 $query = "SELECT * FROM employee WHERE emp_id = '$id'";
 $result = $connection->query($query);
-($row = mysqli_fetch_array($result))  
+$row = mysqli_fetch_array($result)  
 ?>   
 <!DOCTYPE html>
 <html>
@@ -18,7 +20,7 @@ $result = $connection->query($query);
             <link rel = "stylesheet" type = "text/css" href = "../../css/update.css"/>
              <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  
              <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
-             <script>  $(document).ready(function() {    $("#datepicker").datepicker({ maxDate: new Date,dateFormat: "yy/mm/dd" });    $("#datepicker2").datepicker({ dateFormat: "dd/mm/yy" });  });  
+             <script>  $(document).ready(function() {$("#datepicker").datepicker({ maxDate: new Date,defaultDate: new Date("12/11/1990"),dateFormat: "yy/mm/dd" });});  
              </script>
             <h1 align = "center">Update Details</h1>
    </head>
@@ -50,54 +52,22 @@ $result = $connection->query($query);
                    <tr>
                        <td>Designation</td>
                        <td>
-                           <select class = "dropdown" name ="designation"  id = "designation" value = <?php echo "{$row['designation']}"; ?> >
-                               <option>--select the designation--</option>
-                               <option value = "Trainee">Trainee</option>
-                               <option value = "Engineer">Engineer</option>
-                               <option value = "TechnicalArchitect">Technical Architect</option>
-                               <option value = "ProjectHead">Project Head</option>
-                               <option value = "Juniorengineer">Junior Engineer</option>
-                               <option value = "Seniorengineer">Senior Engineer</option>
-                               <option value = "DeliveryManager">Delivery Engineer</option>
-                               <option value = "ProjectLead"> Project Lead</option>
-                               <option value = "ProjectManager">Project Manager</option>
-                           </select>
+                           <?php designation(); ?>  
                            <div id = "designationError"></div>
                        </td> 
                    </tr> 
                    <tr>
                         <td>Nationality:</td>
                         <td>
-                            <select class = "dropdown" name = "nationality" id = "nationality">
-                                <option> --select the nationality--</option>
-                                <option value = "American">American</option>
-                                <option value = "Australian">Australian</option>
-                                <option value = "Bangladeshi">Bangladeshi</option>
-                                <option value = "Brazilian">Brazilian</option>
-                                <option value = "British">British</option>
-                                <option value = "Chinese">Chinese</option>
-                                <option value = "Colombian">Colombian</option>
-                                <option value = "Indian">Indian</option>
-                                <option value = "Indonesian">Indonesian</option>
-                                <option value = "Southafrican">South African</option>
-                                <option value = "Southkorean">South Korean</option>
-                                <option value = "Spanish">Spanish</option>
-                                <option value = "Srilankan">Sri Lankan</option>
-                            </select>
+                            <?php nationality(); ?>  
                             <div id = "nationalityError"></div>
                         </td> 
                     </tr>   
                     <tr>
                         <td>Office</td>
                         <td>
-                            <select class = "dropdown" name = "office" id = "office" value = "<?php echo "{$row['office']}"; ?>" >
-                                <option>--select the office-- </option>
-                                <option value = "Chennai">Chennai</option>
-                                <option value = "Gurgoan">Gurgoan</option>
-                                <option value = "Hyderabad">Hyderabad</option>
-                                <option value = "USA">USA</option>          
-                            </select>
-                            <div id = "officeError"></div>
+                        <?php office(); ?>
+                        <div id = "officeError"></div>
                         </td>
                     </tr>        
                     <tr>
@@ -111,22 +81,7 @@ $result = $connection->query($query);
                     <tr>
                         <td>Blood group</td>
                         <td>
-                            <select class = "dropdown" name = "bloodgroup" id = "bloodgroup">
-                                <option value = "">--select the bloodgroup--</option>
-                                <option value = "A(Pos)">A(Pos)</option>
-                                <option value = "A1(Pos)">A1(Pos)</option>
-                                <option value = "A(Neg)">A(Neg)</option>
-                                <option value = "A1(Neg)">A1(Neg)</option>
-                                <option value = "B(Pos)">B(Pos)</option>
-                                <option value = "B(Neg)">B(Neg)</option>
-                                <option value = "B1(Pos)">B1(Pos)</option>
-                                <option value = "B1(Neg)">B1(Neg)</option>
-                                <option value = "AB(Pos)">AB(Pos)</option>
-                                <option value = "AB(Neg)">AB(Neg)</option>
-                                <option value = "O(Pos)">O(Pos)</option>
-                                <option value = "O(Neg)">O(Neg)</option>
-                                <option value = "unknown">Unknown</option>
-                            </select>
+                            <?php bloodgroup(); ?>  
                     <div id = "bloodgroupError"></div>
                 </td>
               </tr>     
@@ -141,6 +96,3 @@ $result = $connection->query($query);
        </form>
     </body>
 </html>
-<?php 
-
-?>
