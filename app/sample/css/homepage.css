@@ -1,22 +1,19 @@
 body {
-    background-image: url("../image/whitecake.jpg");
-    color: #000;
-    font-style: normal;
-    margin: 13px;
-    padding: 58px;
-    width: 971px;
-}
-div {
-	position = right;
+    background-image : url("../image/whitecake.jpg");
+    color : #000;
+    font-style : normal;
+    margin : 13px;
+    padding : 58px;
+    width : 971px;
 }
 .update {
 	position : "right";
 	color : blue;
-	margin: 13px;
-    padding: 58px;
+	margin : 13px;
+    padding : 58px;
 }
 table {
-	font-style: normal;
+	font-style : normal;
 }
 #button {
     position : "right";
@@ -24,8 +21,8 @@ table {
 
 }
 .add { 
-    display: inline-block;      
-    background-color:light green;
-    color:#000;
-    font-family:Arial;
+    display : inline-block;      
+    background-color : light green;
+    color : #000;
+    font-family : Arial;
 }

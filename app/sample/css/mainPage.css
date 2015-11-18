@@ -1,22 +1,22 @@
 body 
 {
-    background-image: url("../image/whitecake.jpg");
-    color: #000;
-    font-style: normal;
-    margin: 13px;
-    padding: 58px;
-    width: 971px;
+    background-image : url("../image/whitecake.jpg");
+    color : #000;
+    font-style : normal;
+    margin : 13px;
+    padding : 58px;
+    width : 971px;
 }
 .update 
 {
 	position : "right";
 	color : blue;
-	margin: 13px;
-    padding: 58px;
+	margin : 13px;
+    padding : 58px;
 }
 table 
 {
-	font-style: normal;
+	font-style : normal;
 }
 #button 
 {
@@ -25,22 +25,22 @@ table
 }
 .add 
 { 
-    display: inline-block;      
-    background-color:rgb(28,134,238);   
-    color:#000;
-    font-family:Arial;
+    display : inline-block;      
+    background-color :rgb(28,134,238);   
+    color : #000;
+    font-family : Arial;
 }
 .tr
 {
-    background-color:rgb(238,232,178);       
+    background-color : rgb(238,232,178);       
 }
 .th
 {
-    background-color:rgb(28,134,238);  
+    background-color : rgb(28,134,238);  
 }
 
 .delete
 {
-    color:rgb(243,13,23);  
+    color : rgb(243,13,23);  
 }
 

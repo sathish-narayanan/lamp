@@ -2,6 +2,7 @@
 require_once 'Title.php';
 require_once '../model/Database.php';
 require_once '../config/config.php';
+require_once '../controller/autoload.php';
 
 ?>
 <!doctype html>
@@ -11,29 +12,29 @@ require_once '../config/config.php';
 <?php
 $order = "";
 $query = "";
-$connection = new Database(); /*object for Database class*/
-$orderBy_obj = new OrderBy(); /*object for orderBy class*/
+$connection = new Database();
+$order_obj = new Order(); 
 if (isset ($_POST['proceed'])) {
-    $order =  $_POST['select'];
+     $order =  $_POST['select'];
 }
 if ($order == "upcomingBirthday") {
     echo "Arranged by upcoming birthday";
-    $query = $orderBy_obj->arrangeUpcoming();
+    $query = $order_obj->arrangeUpcoming();
 }
 if ($order == "arrangeAscending") {
     echo "Arranged by ascending order";
-    $query = $orderBy_obj->arrangeAscending();
+    $query = $order_obj->arrangeAscending();
 }
 if ($order == "arrangeDescending") {
     echo "Arranged by descending order";
-    $query = $orderBy_obj->arrangeDescending();
+    $query = $order_obj->arrangeDescending();
 }
-if ($order == "") {
-    $query = $orderBy_obj->arrangeRandom();
-}
+ if ($order == "") {
+     $query = $order_obj->arrangeRandom();
+ }
 if ($order == "noOption") {
     echo "No specific order selected";
-    $query = $orderBy_obj->arrangeRandom();
+    $query = $order_obj->arrangeRandom();
 }
 $result = $connection->query($query);
 if ($result) { 

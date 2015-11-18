@@ -1,5 +1,5 @@
 <?php 
-require_once '../model/Database.php';
+require_once '../controller/autoload.php';
 require_once '../config/config.php';
 ?>
 <html><head><title></title></head>
@@ -15,7 +15,7 @@ $address = $_POST['address'];
 $link = new Database();
 $query = "UPDATE employee SET firstname = '$firstname' , lastname = '$lastname' , 
 	     DOB = '$birthday' , office = '$office' , designation = '$designation',
-	     address = '$address' WHERE emp_id='$emp_id'";
+	     address = '$address' WHERE emp_id = '$emp_id'";
 $RESULT = $link->query($query);
 if (!RESULT) {
     echo "not update";

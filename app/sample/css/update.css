@@ -1,29 +1,29 @@
 body {
-    background-color: rgb(70, 60, 120);
-    background-image: url("../image/ballon.jpg");
-    color: #000;
-    font-style: italic;
-    margin: 134px;
-    padding: 58px;
-    width: 502px;
+    background-color : rgb(70, 60, 120);
+    background-image : url("../image/ballon.jpg");
+    color : #000;
+    font-style : italic;
+    margin : 134px;
+    padding : 58px;
+    width : 502px;
 }
 h1 {
-    color: rgb(110, 252, 190);
+    color : rgb(110, 252, 190);
 }
 h2{
-    color: rgb(157,12,170);
+    color : rgb(157,12,170);
 }
 div{
-    color: rgb(255,0,0);
+    color : rgb(255,0,0);
 }
 .button{
-     color: black;
+     color : black;
 }  
 .reset{
      color : black;
 }
 .dropdown option{
-    width: 200px;
+    width : 200px;
 }
 
 

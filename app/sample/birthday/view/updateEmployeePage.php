@@ -1,6 +1,6 @@
 <?php
 
-require_once '../model/Database.php';
+require_once '../controller/autoload.php';
 require_once '../config/config.php';
 require_once '../model/Employee.php';
 require_once '../model/dropdownValues.php';
@@ -18,9 +18,9 @@ $row = mysqli_fetch_array($result)
         <title>Update</title>
             <script type = "text/javascript" src = "../../js/Validate.js"></script>
             <link rel = "stylesheet" type = "text/css" href = "../../css/update.css"/>
-             <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  
-             <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
-             <script>  $(document).ready(function() {$("#datepicker").datepicker({ maxDate: new Date,defaultDate: new Date("12/11/1990"),dateFormat: "yy/mm/dd" });});  
+             <link href = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  
+             <script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
+             <script>$(document).ready(function() {$("#datepicker").datepicker({ maxDate: new Date,defaultDate: new Date("12/11/1990"),dateFormat: "yy/mm/dd" });});  
              </script>
             <h1 align = "center">Update Details</h1>
    </head>
@@ -63,11 +63,14 @@ $row = mysqli_fetch_array($result)
                             <div id = "nationalityError"></div>
                         </td> 
                     </tr>   
-                    <tr>
+                    <tr> 
                         <td>Office</td>
                         <td>
-                        <?php office(); ?>
+                      
+                        
                         <div id = "officeError"></div>
+                        <option value = ><?php echo "{$row['office']}"; office();?>
+                       </option>
                         </td>
                     </tr>        
                     <tr>

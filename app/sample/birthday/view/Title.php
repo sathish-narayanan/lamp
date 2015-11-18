@@ -1,5 +1,6 @@
 <?php
-require_once '../model/OrderBy.php';
+require_once '../controller/autoload.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ require_once '../model/OrderBy.php';
         <form method = "POST" action = "mainPage.php" >
             <select name = "select" class = "dropdown">
                 <option value = "noOption">--select order option--</option>
-                <option value = "upcomingBirthday" >Upcoming birthday</option>
+                <option value = "upcomingBirthday">Upcoming birthday</option>
                 <option value = "arrangeAscending">Arrange by ascending</option>
                 <option value = "arrangeDescending">Arrange by Descending</option>
             </select>

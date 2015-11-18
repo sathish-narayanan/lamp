@@ -1,7 +1,6 @@
 <?php
-require_once '../model/Database.php';
 require_once '../config/config.php';
-require_once '../model/Employee.php';
+require_once '../controller/autoload.php';
 require_once '../model/dropdownValues.php';
 
 $emp_obj = new Employee($_POST);

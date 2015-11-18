@@ -2,8 +2,6 @@
 require_once '../model/Database.php';
 require_once '../config/config.php';
 
-
-
 function bloodgroup() 
 {
     $connection = new Database();
